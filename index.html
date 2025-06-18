@@ -1,52 +1,260 @@
 <html>
 <head>
   <title>Site da Alice</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts e Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body {
-      background-color: #e0f7fa; /* Azul claro */
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
+    :root{
+      --prim:#009688;
+      --prim-dark:#00695c;
+      --back:#e0f7fa;
+      --white:#fff;
+      --dark:#263238;
     }
 
-    h1 {
-      color: #006064;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--back);color:var(--dark);line-height:1.6;}
+
+    /* ---------  Menu --------- */
+    nav{
+      position:fixed;top:0;left:0;width:100%;
+      background:var(--white);box-shadow:0 2px 4px rgba(0,0,0,.1);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:10px 30px;z-index:1000;
+    }
+    nav .logo{font-weight:600;color:var(--prim-dark);}
+    nav ul{list-style:none;display:flex;gap:25px;}
+    nav a{color:var(--dark);text-decoration:none;font-size:15px;}
+    nav a:hover{color:var(--prim);}
+
+    /* hamburguer (mobile) */
+    .menu-toggle{display:none;font-size:24px;background:none;border:none;cursor:pointer;color:var(--dark);}
+    @media(max-width:700px){
+      nav ul{flex-direction:column;position:absolute;top:60px;right:0;background:var(--white);width:180px;padding:10px;display:none;}
+      nav ul.show{display:block;}
+      .menu-toggle{display:block;}
     }
 
-    p {
-      font-size: 18px;
+    /* ---------  Hero --------- */
+    header.hero{
+      height:50vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;padding:70px 20px 20px;
+      background:linear-gradient(135deg, var(--prim) 0%, var(--prim-dark) 100%);
+      color:var(--white);
+    }
+    header.hero h2{font-size:2.2rem;margin-bottom:10px;}
+    header.hero p{max-width:600px;margin:0 auto;}
+
+    /* ---------  Seções genéricas --------- */
+    section{padding:60px 20px;max-width:1100px;margin:auto;}
+    h3.section-title{font-size:1.8rem;color:var(--prim-dark);margin-bottom:25px;text-align:center;}
+
+    /* ---------  Sobre --------- */
+    .sobre{display:flex;gap:30px;flex-wrap:wrap;}
+    .sobre img{flex:1 1 320px;max-width:450px;border-radius:12px;}
+    .sobre div{flex:1 1 320px;}
+
+    /* ---------  Cards especialidades --------- */
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:25px;}
+    .card{
+      background:var(--white);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);
+      padding:25px;text-align:center;transition:transform .3s;
+    }
+    .card:hover{transform:translateY(-6px);}
+    .card img{width:80px;height:80px;object-fit:cover;margin-bottom:15px;border-radius:50%;}
+    .card h4{margin-bottom:10px;color:var(--prim-dark);}
+
+    /* ---------  Timeline --------- */
+    .timeline{position:relative;margin-left:10px;}
+    .timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:4px;background:var(--prim);}
+    .tl-item{position:relative;padding-left:40px;margin-bottom:25px;}
+    .tl-item::before{
+      content:'\f111';font-family:'Font Awesome 6 Free';font-weight:900;
+      position:absolute;left:-2px;top:0;color:var(--prim);font-size:12px;
     }
 
-    .medicina {
-      margin-top: 40px;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+    /* ---------  Quiz --------- */
+    #quiz-box{background:var(--white);border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.1);padding:30px;max-width:500px;margin:auto;text-align:center;}
+    #quiz-box button{background:var(--prim);color:#fff;border:none;padding:10px 18px;margin:8px;border-radius:6px;cursor:pointer;}
+    #quiz-box button:hover{background:var(--prim-dark);}
+    #result{font-weight:600;font-size:18px;margin-top:15px;color:var(--prim-dark);}
 
-    .medicina h2 {
-      color: #00796b;
+    /* ---------  Contato --------- */
+    form{display:flex;flex-direction:column;gap:15px;max-width:600px;margin:auto;}
+    form input,form textarea{
+      padding:12px;border:1px solid #bbb;border-radius:6px;font-size:15px;
     }
+    form button{background:var(--prim-dark);color:#fff;border:none;padding:12px;border-radius:6px;cursor:pointer;}
+    form button:hover{background:var(--prim);}
 
-    .medicina img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-    }
+    /* ---------  Rodapé --------- */
+    footer{background:var(--prim-dark);color:var(--white);text-align:center;padding:20px;}
   </style>
 </head>
+
 <body>
+  <!-- Início que NÃO pode ser alterado -->
   <h1> Maya Massafera!!</h1>
   <p> Este site foi criado pela Alice!</p>
+  <!-- Fim da parte original -->
 
-  <!-- Parte sobre medicina -->
-  <div class="medicina">
-    <h2>O Poder da Medicina</h2>
-    <p>A medicina salva vidas, cuida de pessoas e transforma o mundo! Profissionais da saúde são heróis do dia a dia.</p>
-    <img src="https://img.freepik.com/fotos-premium/medico-sorridente-com-prancheta-no-hospital_13339-220913.jpg" alt="Médico feliz">
-    <p>Estudar medicina é estudar o corpo humano, a saúde e o bem-estar. É uma profissão cheia de amor e responsabilidade!</p>
-    <img src="https://img.freepik.com/fotos-premium/equipe-de-medicos-e-enfermeiros-no-hospital_53876-153369.jpg" alt="Equipe médica">
-  </div>
+  <!-- Menu fixo -->
+  <nav>
+    <span class="logo"><i class="fa-solid fa-stethoscope"></i> Medicina</span>
+    <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+    <ul id="menu">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#historia">História</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h2>Bem-vindo ao Universo da Medicina</h2>
+    <p>Aqui você descobre curiosidades, especialidades, fatos históricos e testa seus conhecimentos na área da saúde.</p>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h3 class="section-title">Sobre a Medicina</h3>
+    <div class="sobre">
+      <img src="https://images.unsplash.com/photo-1580281657523-47c01d2884c1?auto=format&fit=crop&w=900&q=60" alt="Equipe médica em ação">
+      <div>
+        <p>A medicina é a ciência e a prática de diagnosticar, tratar e prevenir doenças. Mais do que isso, é um compromisso com a vida, o cuidado e o bem-estar das pessoas.</p>
+        <p>Profissionais de saúde usam conhecimento científico, tecnologias de ponta e empatia para oferecer o melhor atendimento possível. Desde a descoberta de vacinas até cirurgias robóticas, a medicina está em constante evolução.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section id="especialidades">
+    <h3 class="section-title">Principais Especialidades</h3>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1488363386378-54b6b115ba1c?auto=format&fit=crop&w=400&q=60" alt="Coração desenhado">
+        <h4>Cardiologia</h4>
+        <p>Diagnóstico e tratamento das doenças do coração e do sistema circulatório.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1614850523443-02a24413de37?auto=format&fit=crop&w=400&q=60" alt="Raio-X de pulmão">
+        <h4>Pneumologia</h4>
+        <p>Foca nas doenças do sistema respiratório, como asma, DPOC e pneumonia.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=400&q=60" alt="Cérebro estilizado">
+        <h4>Neurologia</h4>
+        <p>Estuda o cérebro, a medula espinhal e os nervos periféricos.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=400&q=60" alt="Estetoscópio em barriga de grávida">
+        <h4>Ginecologia & Obstetrícia</h4>
+        <p>Saúde da mulher, gestação, parto e puerpério.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTÓRIA (Timeline) -->
+  <section id="historia">
+    <h3 class="section-title">Linha do Tempo da Medicina</h3>
+    <div class="timeline">
+      <div class="tl-item"><strong>~460 a.C.</strong> — Hipócrates propõe que doenças têm causas naturais, não místicas.</div>
+      <div class="tl-item"><strong>1543</strong> — Andreas Vesalius publica “De Humani Corporis Fabrica”, detalhando a anatomia humana.</div>
+      <div class="tl-item"><strong>1796</strong> — Edward Jenner desenvolve a primeira vacina (varíola).</div>
+      <div class="tl-item"><strong>1928</strong> — Alexander Fleming descobre a penicilina, o primeiro antibiótico.</div>
+      <div class="tl-item"><strong>2000+</strong> — Avanços em terapia gênica, cirurgia robótica e medicina personalizada.</div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <h3 class="section-title">Teste Rápido de Conhecimento</h3>
+    <div id="quiz-box">
+      <p id="question">Clique em “Começar” para jogar!</p>
+      <div id="answers"></div>
+      <button id="next-btn" style="display:none;">Próxima</button>
+      <button id="start-btn">Começar</button>
+      <p id="result"></p>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <h3 class="section-title">Fale Conosco</h3>
+    <form onsubmit="event.preventDefault();alert('Mensagem enviada!');this.reset();">
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <textarea rows="5" placeholder="Sua mensagem"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    © 2025 Site da Alice — Conteúdo educacional.  
+    <br>Imagens: Unsplash | Ícones: Font Awesome
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    /* ---------- Menu mobile ---------- */
+    const toggle = document.querySelector('.menu-toggle');
+    const menu   = document.getElementById('menu');
+    toggle.addEventListener('click',()=>menu.classList.toggle('show'));
+
+    /* ---------- Quiz ---------- */
+    const questions = [
+      { q:'Qual órgão bombeia o sangue pelo corpo?', a:['Pulmão','Coração','Rins','Fígado'], c:1 },
+      { q:'Quem descobriu a penicilina?',         a:['Pasteur','Fleming','Curie','Salk'],    c:1 },
+      { q:'Qual vitamina é produzida pela pele ao receber sol?', a:['A','B12','C','D'], c:3 }
+    ];
+    let idx=-1, score=0;
+    const qEl=document.getElementById('question');
+    const aEl=document.getElementById('answers');
+    const next=document.getElementById('next-btn');
+    const start=document.getElementById('start-btn');
+    const res=document.getElementById('result');
+
+    start.onclick=nextQuestion;
+    next.onclick=nextQuestion;
+
+    function nextQuestion(){
+      idx++;
+      if(idx===questions.length){
+        qEl.textContent='Fim do quiz!';
+        aEl.innerHTML='';
+        start.style.display='inline-block';
+        next.style.display='none';
+        res.textContent=`Você acertou ${score} de ${questions.length}.`;
+        idx=-1;score=0;
+        return;
+      }
+      start.style.display='none';
+      next.style.display='none';
+      res.textContent='';
+      const {q,a}=questions[idx];
+      qEl.textContent=q;
+      aEl.innerHTML='';
+      a.forEach((opt,i)=>{
+        const btn=document.createElement('button');
+        btn.textContent=opt;
+        btn.onclick=()=>checkAnswer(i);
+        aEl.appendChild(btn);
+      });
+    }
+    function checkAnswer(i){
+      if(i===questions[idx].c){score++;}
+      next.style.display='inline-block';
+      Array.from(aEl.children).forEach(b=>b.disabled=true);
+    }
+  </script>
 </body>
 </html>
